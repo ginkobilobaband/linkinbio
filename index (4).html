@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOLLOW ORBIT — link</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ede7d9;
+    --ink: #15120f;
+    --poster-red: #b3241c;
+    --ochre: #c99a2e;
+    --line: #15120f;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Space Mono', monospace;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px 64px;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(237,231,217,0.05) 0, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(179,36,28,0.08) 0, transparent 45%);
+  }
+
+  .flyer {
+    width: 100%;
+    max-width: 440px;
+    border: 3px solid var(--paper);
+    padding: 36px 28px 32px;
+    position: relative;
+  }
+
+  .flyer::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(237,231,217,0.35);
+    pointer-events: none;
+  }
+
+  .kicker {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ochre);
+    margin: 0 0 6px;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(42px, 12vw, 58px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    text-align: center;
+    margin: 0 0 4px;
+    color: var(--paper);
+    text-shadow: 3px 3px 0 var(--poster-red);
+  }
+
+  .tagline {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(237,231,217,0.75);
+    margin: 0 0 28px;
+    font-style: italic;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px dashed rgba(237,231,217,0.4);
+    margin: 0 0 24px;
+  }
+
+  .photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 28px;
+    border: 1px solid rgba(237,231,217,0.4);
+    background:
+      repeating-linear-gradient(45deg, rgba(237,231,217,0.06) 0 2px, transparent 2px 6px),
+      linear-gradient(160deg, #201b16, #0f0d0b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(237,231,217,0.45);
+    text-align: center;
+    padding: 12px;
+  }
+
+  .links {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--paper);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .links a:hover,
+  .links a:focus-visible {
+    background: var(--paper);
+    color: var(--ink);
+    outline: none;
+  }
+
+  .links a .num {
+    font-size: 12px;
+    color: var(--ochre);
+    min-width: 20px;
+  }
+
+  .links a:hover .num,
+  .links a:focus-visible .num {
+    color: var(--poster-red);
+  }
+
+  .links a .arrow {
+    opacity: 0.5;
+  }
+
+  .links a.primary {
+    border-color: var(--poster-red);
+    background: var(--poster-red);
+    color: var(--paper);
+  }
+
+  .links a.primary .num { color: var(--paper); opacity: 0.7; }
+
+  .links a.primary:hover,
+  .links a.primary:focus-visible {
+    background: var(--paper);
+    color: var(--poster-red);
+  }
+
+  .dates {
+    margin: 0 0 28px;
+  }
+
+  .dates h2 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
+    color: var(--ochre);
+  }
+
+  .date-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12.5px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(237,231,217,0.2);
+  }
+
+  .date-row:last-child { border-bottom: none; }
+
+  .date-row .city { color: var(--paper); }
+  .date-row .day { color: rgba(237,231,217,0.6); }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+  }
+
+  .socials a {
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .socials a:hover,
+  .socials a:focus-visible {
+    border-bottom-color: var(--ochre);
+    color: var(--ochre);
+  }
+
+  footer {
+    text-align: center;
+    font-size: 10.5px;
+    color: rgba(237,231,217,0.4);
+    letter-spacing: 0.03em;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .flyer { animation: settle 0.5s ease-out; }
+  }
+
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="flyer">
+    <p class="kicker">dal vivo ovunque, spesso in ritardo</p>
+    <h1>HOLLOW<br>ORBIT</h1>
+    <p class="tagline">rock rumoroso da un garage di provincia</p>
+
+    <hr class="divider">
+
+    <div class="photo">FOTO BAND<br>(sostituisci con un'immagine reale)</div>
+
+    <ul class="links">
+      <li><a class="primary" href="#" target="_blank" rel="noopener">
+        <span class="num">01</span><span>Ultimo singolo — ascolta ora</span><span class="arrow">↗</span>
+      </a></li>
+      <li><a href="#" target="_blank" rel="noopener">
+        <span class="num">02</span><span>Spotify</span><span class="arrow">↗</span>
+      </a></li>
+      <li><a href="#" target="_blank" rel="noopener">
+        <span class="num">03</span><span>Apple Music</span><span class="arrow">↗</span>
+      </a></li>
+      <li><a href="#" target="_blank" rel="noopener">
+        <span class="num">04</span><span>Bandcamp</span><span class="arrow">↗</span>
+      </a></li>
+      <li><a href="#" target="_blank" rel="noopener">
+        <span class="num">05</span><span>YouTube</span><span class="arrow">↗</span>
+      </a></li>
+      <li><a href="#" target="_blank" rel="noopener">
+        <span class="num">06</span><span>Merch</span><span class="arrow">↗</span>
+      </a></li>
+      <li><a href="#" target="_blank" rel="noopener">
+        <span class="num">07</span><span>Booking / contatti</span><span class="arrow">↗</span>
+      </a></li>
+    </ul>
+
+    <div class="dates">
+      <h2>prossime date</h2>
+      <div class="date-row"><span class="city">Milano — Legend Club</span><span class="day">14 nov</span></div>
+      <div class="date-row"><span class="city">Bologna — Freakout</span><span class="day">22 nov</span></div>
+      <div class="date-row"><span class="city">Roma — Monk</span><span class="day">05 dic</span></div>
+    </div>
+
+    <div class="socials">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" target="_blank" rel="noopener">Facebook</a>
+    </div>
+
+    <footer>© 2026 Hollow Orbit — pagina di esempio</footer>
+  </div>
+
+</body>
+</html>
