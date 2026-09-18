@@ -100,7 +100,6 @@
     z-index: 2;
     overflow: hidden;
     pointer-events: none;
-    mix-blend-mode: soft-light;
   }
 
   .leaf {
@@ -109,31 +108,30 @@
     mix-blend-mode: soft-light;
     transition: transform 0.2s ease-out;
     will-change: transform;
-    mix-blend-mode: soft-light;
   }
 
   .leaf--tl {
-    width: clamp(340px, 42vw, 700px);
+    width: clamp(374px, 46vw, 770px);
     top: -9vh;
     left: -8vw;
-    transform: rotate(-8deg);
+    transform: rotate(5deg);
   }
 
   .leaf--mid {
-    width: clamp(280px, 34vw, 560px);
+    width: clamp(308px, 37vw, 616px);
     top: 16vh;
     left: 23vw;
   }
 
   .leaf--br {
-    width: clamp(190px, 20vw, 360px);
+    width: clamp(209px, 22vw, 396px);
     bottom: -7vh;
     right: 4vw;
     transform: rotate(18deg);
   }
 
   .leaf--br2 {
-    width: clamp(110px, 12vw, 200px);
+    width: clamp(121px, 13vw, 220px);
     bottom: 2vh;
     right: -5vw;
     transform: rotate(38deg);
@@ -171,37 +169,15 @@
   }
 
   h1 {
-    font-family: 'ChonkyPixels', 'Space Mono', monospace;
+    font-family: 'Chonky Pixels', 'Space Mono', monospace;
     font-weight: 400;
     font-size: clamp(34px, 10vw, 52px);
     line-height: 1.1;
     letter-spacing: 0.02em;
     margin: 0 0 clamp(18px, 5vw, 28px);
     color: var(--paper);
-    margin: 0 auto;
   }
-  .ginko{
-    color: #FFF;
-text-align: center;
--webkit-text-stroke-width: 2px;
--webkit-text-stroke-color: #FFF;
-font-family: ChonkyPixels;
-font-size: 72px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: 23.04px;
-  }
-.biloba{
-  color: #FFF;
-font-family: ChonkyPixels;
-font-size: 72px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: 10.8px;
-  margin-bottom: 20px;
-}
+
   .avatar {
     width: clamp(96px, 26vw, 128px);
     height: clamp(96px, 26vw, 128px);
@@ -285,8 +261,7 @@ letter-spacing: 10.8px;
 
   <main class="page">
     <div class="top">
-      <h1 class="ginko">GINKO</h1>
-      <h1 class="biloba">BILOBA</h1>
+      <h1>GINKO<br>BILOBA</h1>
 
       <div class="avatar">
         <img src="https://www.ginko-biloba.it/assets/band.jpg" alt="Ginko Biloba">
@@ -295,14 +270,14 @@ letter-spacing: 10.8px;
       <ul class="links">
         <li>
           <!-- ICONA SPOTIFY: sostituisci il contenuto di .icon con il tuo svg/img -->
-          <a class="spotify" href="https://open.spotify.com/intl-it/artist/4qKzu5BHWqpxhZRFBVRAWH?si=y4lgbOVxTZeE-3fs7_gj_A" target="_blank" rel="noopener">
+          <a class="spotify" href="#" target="_blank" rel="noopener">
             <span>spotify</span>
             <span class="icon">♪</span>
           </a>
         </li>
         <li>
           <!-- ICONA CONTATTI: sostituisci il contenuto di .icon con il tuo svg/img -->
-          <a class="contact" href="mailto:ginkgobiloba.ent@gmail.com">
+          <a class="contact" href="mailto:booking@ginkobiloba.it">
             <span>contatti</span>
             <span class="icon">@</span>
           </a>
