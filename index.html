@@ -3,17 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HOLLOW ORBIT — link</title>
+<title>Ginko Biloba</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Chonky Pixels';
+    src: url('fonts/ChonkyPixels.ttf') format('truetype');
+    font-display: swap;
+  }
+
   :root {
-    --paper: #ede7d9;
-    --ink: #15120f;
-    --poster-red: #b3241c;
-    --ochre: #c99a2e;
-    --line: #15120f;
+    --pink: #FE64A3;
+    --teal: #07BEB8;
+    --violet: #8B5FBF;
+    --paper: #FFFFFF;
+    --ink: #0B0F0D;
   }
 
   * { box-sizing: border-box; }
@@ -21,263 +27,304 @@
   html, body {
     margin: 0;
     padding: 0;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: 'Space Mono', monospace;
+    min-height: 100%;
   }
+
+  html { overflow-x: hidden; }
 
   body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 48px 20px 64px;
-    background-image:
-      radial-gradient(circle at 15% 20%, rgba(237,231,217,0.05) 0, transparent 40%),
-      radial-gradient(circle at 85% 80%, rgba(179,36,28,0.08) 0, transparent 45%);
-  }
-
-  .flyer {
-    width: 100%;
-    max-width: 440px;
-    border: 3px solid var(--paper);
-    padding: 36px 28px 32px;
-    position: relative;
-  }
-
-  .flyer::before {
-    content: "";
-    position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(237,231,217,0.35);
-    pointer-events: none;
-  }
-
-  .kicker {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--ochre);
-    margin: 0 0 6px;
-    text-align: center;
-  }
-
-  h1 {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: clamp(42px, 12vw, 58px);
-    line-height: 0.92;
-    letter-spacing: 0.01em;
-    text-align: center;
-    margin: 0 0 4px;
+    font-family: 'Space Mono', monospace;
     color: var(--paper);
-    text-shadow: 3px 3px 0 var(--poster-red);
-  }
-
-  .tagline {
-    text-align: center;
-    font-size: 13px;
-    color: rgba(237,231,217,0.75);
-    margin: 0 0 28px;
-    font-style: italic;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px dashed rgba(237,231,217,0.4);
-    margin: 0 0 24px;
-  }
-
-  .photo {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    margin-bottom: 28px;
-    border: 1px solid rgba(237,231,217,0.4);
-    background:
-      repeating-linear-gradient(45deg, rgba(237,231,217,0.06) 0 2px, transparent 2px 6px),
-      linear-gradient(160deg, #201b16, #0f0d0b);
+    overflow-x: hidden;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: rgba(237,231,217,0.45);
-    text-align: center;
-    padding: 12px;
+    padding: clamp(16px, 5vw, 48px) clamp(16px, 6vw, 24px);
+    position: relative;
   }
+
+  /* ---------- animated mesh background ---------- */
+
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background: var(--pink);
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .blob {
+    position: absolute;
+    width: 80vmax;
+    height: 80vmax;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.85;
+    will-change: transform;
+  }
+
+  .blob--1 {
+    background: radial-gradient(circle at 30% 30%, var(--pink), transparent 70%);
+    top: -30vmax;
+    left: -20vmax;
+    animation: drift1 26s ease-in-out infinite;
+  }
+
+  .blob--2 {
+    background: radial-gradient(circle at 60% 60%, var(--violet), transparent 70%);
+    top: 10vmax;
+    left: 10vmax;
+    animation: drift2 32s ease-in-out infinite;
+  }
+
+  .blob--3 {
+    background: radial-gradient(circle at 50% 50%, var(--teal), transparent 70%);
+    bottom: -35vmax;
+    right: -20vmax;
+    animation: drift3 30s ease-in-out infinite;
+  }
+
+  @keyframes drift1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(8vmax, 6vmax) scale(1.1); }
+    66%      { transform: translate(-4vmax, 10vmax) scale(0.95); }
+  }
+
+  @keyframes drift2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    40%      { transform: translate(-10vmax, -6vmax) scale(1.15); }
+    75%      { transform: translate(6vmax, -8vmax) scale(0.9); }
+  }
+
+  @keyframes drift3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(-8vmax, -10vmax) scale(1.2); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none !important; }
+  }
+
+  /* ---------- leaves (stesso contesto di stacking dello sfondo, per il blend mode) ---------- */
+
+  .leaf {
+    position: absolute;
+    max-width: none;
+    mix-blend-mode: soft-light;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+
+  .leaf--tl {
+    width: clamp(340px, 42vw, 700px);
+    top: -9vh;
+    left: -8vw;
+    transform: rotate(-8deg);
+  }
+
+  .leaf--mid {
+    width: clamp(280px, 34vw, 560px);
+    top: 16vh;
+    left: 23vw;
+  }
+
+  .leaf--br {
+    width: clamp(190px, 20vw, 360px);
+    bottom: -7vh;
+    right: 4vw;
+    transform: rotate(18deg);
+  }
+
+  .leaf--br2 {
+    width: clamp(110px, 12vw, 200px);
+    bottom: 2vh;
+    right: -5vw;
+    transform: rotate(38deg);
+  }
+
+  @media (max-width: 720px) {
+    .leaf--mid  { display: none; }
+    .leaf--tl   { width: clamp(300px, 72vw, 480px); top: -7vh; left: -16vw; }
+    .leaf--br   { width: clamp(150px, 38vw, 240px); bottom: 5vh; left: -12vw; right: auto; transform: rotate(-10deg); }
+    .leaf--br2  { display: none; }
+  }
+
+  /* ---------- content column (ex "card", ora senza chrome) ---------- */
+
+  .page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    min-height: min(720px, 82dvh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: clamp(28px, 7vw, 44px) clamp(18px, 6vw, 32px) clamp(20px, 5vw, 32px);
+    gap: 24px;
+  }
+
+  .top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-family: 'Chonky Pixels', 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: clamp(34px, 10vw, 52px);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    margin: 0 0 clamp(18px, 5vw, 28px);
+    color: var(--paper);
+  }
+
+  .avatar {
+    width: clamp(96px, 26vw, 128px);
+    height: clamp(96px, 26vw, 128px);
+    margin: 0 auto clamp(20px, 5vw, 28px);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    background: linear-gradient(160deg, var(--violet), var(--teal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* mostrato solo se src valido */
+  }
+
+  .avatar svg { width: 40%; height: 40%; opacity: 0.85; }
 
   .links {
     list-style: none;
-    margin: 0 0 32px;
+    margin: 0;
     padding: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: clamp(10px, 3vw, 14px);
   }
 
   .links a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 14px 16px;
-    border: 1px solid var(--paper);
+    gap: 14px;
+    padding: clamp(12px, 4vw, 16px) clamp(16px, 5vw, 22px);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.40));
+    border: 1px solid rgba(255, 255, 255, 0.9);
     color: var(--paper);
     text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 0.02em;
-    transition: background 0.15s ease, color 0.15s ease;
+    font-size: clamp(12.5px, 3.6vw, 14px);
+    letter-spacing: 0.06em;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
   }
 
   .links a:hover,
   .links a:focus-visible {
-    background: var(--paper);
-    color: var(--ink);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.50));
+    transform: translateY(-1px);
     outline: none;
   }
 
-  .links a .num {
-    font-size: 12px;
-    color: var(--ochre);
-    min-width: 20px;
-  }
-
-  .links a:hover .num,
-  .links a:focus-visible .num {
-    color: var(--poster-red);
-  }
-
-  .links a .arrow {
-    opacity: 0.5;
-  }
-
-  .links a.primary {
-    border-color: var(--poster-red);
-    background: var(--poster-red);
-    color: var(--paper);
-  }
-
-  .links a.primary .num { color: var(--paper); opacity: 0.7; }
-
-  .links a.primary:hover,
-  .links a.primary:focus-visible {
-    background: var(--paper);
-    color: var(--poster-red);
-  }
-
-  .dates {
-    margin: 0 0 28px;
-  }
-
-  .dates h2 {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    letter-spacing: 0.04em;
-    margin: 0 0 12px;
-    color: var(--ochre);
-  }
-
-  .date-row {
+  .links a .icon {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 12.5px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(237,231,217,0.2);
-  }
-
-  .date-row:last-child { border-bottom: none; }
-
-  .date-row .city { color: var(--paper); }
-  .date-row .day { color: rgba(237,231,217,0.6); }
-
-  .socials {
-    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 18px;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    margin-bottom: 24px;
-  }
-
-  .socials a {
-    color: var(--paper);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-  }
-
-  .socials a:hover,
-  .socials a:focus-visible {
-    border-bottom-color: var(--ochre);
-    color: var(--ochre);
+    flex-shrink: 0;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.9);
+    background: none;
+    border: none;
   }
 
   footer {
-    text-align: center;
-    font-size: 10.5px;
-    color: rgba(237,231,217,0.4);
-    letter-spacing: 0.03em;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .flyer { animation: settle 0.5s ease-out; }
-  }
-
-  @keyframes settle {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+    font-size: clamp(11px, 3vw, 12.5px);
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.85);
+    flex-shrink: 0;
   }
 </style>
 </head>
 <body>
 
-  <div class="flyer">
-    <p class="kicker">dal vivo ovunque, spesso in ritardo</p>
-    <h1>HOLLOW<br>ORBIT</h1>
-    <p class="tagline">rock rumoroso da un garage di provincia</p>
+  <div class="bg">
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+    <div class="blob blob--3"></div>
 
-    <hr class="divider">
-
-    <div class="photo">FOTO BAND<br>(sostituisci con un'immagine reale)</div>
-
-    <ul class="links">
-      <li><a class="primary" href="#" target="_blank" rel="noopener">
-        <span class="num">01</span><span>Ultimo singolo — ascolta ora</span><span class="arrow">↗</span>
-      </a></li>
-      <li><a href="#" target="_blank" rel="noopener">
-        <span class="num">02</span><span>Spotify</span><span class="arrow">↗</span>
-      </a></li>
-      <li><a href="#" target="_blank" rel="noopener">
-        <span class="num">03</span><span>Apple Music</span><span class="arrow">↗</span>
-      </a></li>
-      <li><a href="#" target="_blank" rel="noopener">
-        <span class="num">04</span><span>Bandcamp</span><span class="arrow">↗</span>
-      </a></li>
-      <li><a href="#" target="_blank" rel="noopener">
-        <span class="num">05</span><span>YouTube</span><span class="arrow">↗</span>
-      </a></li>
-      <li><a href="#" target="_blank" rel="noopener">
-        <span class="num">06</span><span>Merch</span><span class="arrow">↗</span>
-      </a></li>
-      <li><a href="#" target="_blank" rel="noopener">
-        <span class="num">07</span><span>Booking / contatti</span><span class="arrow">↗</span>
-      </a></li>
-    </ul>
-
-    <div class="dates">
-      <h2>prossime date</h2>
-      <div class="date-row"><span class="city">Milano — Legend Club</span><span class="day">14 nov</span></div>
-      <div class="date-row"><span class="city">Bologna — Freakout</span><span class="day">22 nov</span></div>
-      <div class="date-row"><span class="city">Roma — Monk</span><span class="day">05 dic</span></div>
-    </div>
-
-    <div class="socials">
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
-      <a href="#" target="_blank" rel="noopener">TikTok</a>
-      <a href="#" target="_blank" rel="noopener">Facebook</a>
-    </div>
-
-    <footer>© 2026 Hollow Orbit — pagina di esempio</footer>
+    <img class="leaf leaf--tl"  src="assets/leaf.webp" alt="">
+    <img class="leaf leaf--mid" src="assets/leaf.webp" alt="">
+    <img class="leaf leaf--br"  src="assets/leaf.webp" alt="">
+    <img class="leaf leaf--br2" src="assets/leaf.webp" alt="">
   </div>
+
+  <main class="page">
+    <div class="top">
+      <h1>GINKO<br>BILOBA</h1>
+
+      <div class="avatar">
+        <!-- sostituisci con <img src="assets/band.jpg" alt="Ginko Biloba"> e rimuovi l'svg -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 2c-3.3 0-9 1.7-9 5v2h18v-2c0-3.3-5.7-5-9-5z" fill="white"/>
+        </svg>
+      </div>
+
+      <ul class="links">
+        <li>
+          <!-- ICONA SPOTIFY: sostituisci il contenuto di .icon con il tuo svg/img -->
+          <a class="spotify" href="#" target="_blank" rel="noopener">
+            <span>spotify</span>
+            <span class="icon">♪</span>
+          </a>
+        </li>
+        <li>
+          <!-- ICONA CONTATTI: sostituisci il contenuto di .icon con il tuo svg/img -->
+          <a class="contact" href="mailto:booking@ginkobiloba.it">
+            <span>contatti</span>
+            <span class="icon">@</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <footer>zio tibia sta arrivando</footer>
+  </main>
+
+  <script>
+    // parallax leggero sulle foglie in base alla posizione del mouse
+    const leaves = document.querySelectorAll('.leaf');
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!isTouch && !prefersReducedMotion) {
+      window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        leaves.forEach((leaf, i) => {
+          const depth = (i + 1) * 6;
+          leaf.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
+        });
+      });
+    }
+  </script>
 
 </body>
 </html>
