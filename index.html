@@ -116,16 +116,12 @@
     top: -9vh;
     left: -8vw;
     transform: rotate(5deg);
-    
-    mix-blend-mode: soft-light;
   }
 
   .leaf--mid {
     width: clamp(308px, 37vw, 616px);
     top: 16vh;
     left: 23vw;
-    
-    mix-blend-mode: soft-light;
   }
 
   .leaf--br {
@@ -133,8 +129,6 @@
     bottom: -7vh;
     right: 4vw;
     transform: rotate(18deg);
-    
-    mix-blend-mode: soft-light;
   }
 
   .leaf--br2 {
@@ -142,14 +136,12 @@
     bottom: 2vh;
     right: -5vw;
     transform: rotate(38deg);
-    
-    mix-blend-mode: soft-light;
   }
 
   @media (max-width: 720px) {
     .leaf--mid  { display: none; }
-    .leaf--tl   { width: 770px; top: -15vh; left: -80vw; }
-    .leaf--br   { width: clamp(150px, 38vw, 240px); bottom: 5vh; left: -12vw; right: auto; transform: rotate(-10deg); }
+    .leaf--tl   { width: 770px; top: 0vh; left: -80vw; }
+    .leaf--br   { width: clamp(150px, 38vw, 240px); bottom: 0vh; left: auto; right: -12vw; transform: rotate(-80deg); }
     .leaf--br2  { display: none; }
   }
 
